@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Prices Prediction by Ilesanmi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: green;
+            padding: 13px;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+            margin: 0;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        form {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        input[type="number"],
+        select {
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+        }
+
+        input[type="submit"] {
+            background-color: green;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .output {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>House Prices Prediction by Ilesanmi</h1>
+    </header>
+    <img src="{{ url_for('static', filename='house-rent.jpg') }}" alt="House for rent in India">
+    <form method="POST">
+        <label for="City">City:</label>
+        <select name="City" id="City">
+            <option value="Mumbai">Mumbai</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Kolkata">Kolkata</option>
+        </select>
+        <br>
+        <label for="Bathroom">Number of Bathroom:</label>
+        <input type="number" name="Bathroom" id="Bathroom" required>
+        <br>
+        <label for="Size">Size of the Land:</label>
+        <input type="number" name="Size" id="Size" required>
+        <br>
+        <label for="bhk">Number of BHK:</label>
+        <input type="number" name="bhk" id="bhk" required>
+        <br>
+        <input type="submit" value="Make Prediction">
+    </form>
+    {% if prediction %}
+        <div class="output">
+            <p>The price is most likely: {{ prediction }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
